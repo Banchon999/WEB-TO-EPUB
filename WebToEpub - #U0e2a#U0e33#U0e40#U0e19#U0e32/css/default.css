@@ -1,0 +1,633 @@
+/* ═══════════════════════════════════════════════════════
+   WebToEpub · Dark Ink Edition
+   Modern dark UI — charcoal base, amber accent
+═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+/* ── Variables ── */
+:root {
+    --bg:        #141414;
+    --surface:   #1e1e1e;
+    --surface2:  #252525;
+    --border:    #2e2e2e;
+    --border2:   #3a3a3a;
+    --text:      #e8e6e0;
+    --text-dim:  #888;
+    --accent:    #d4a853;
+    --accent2:   #b8893a;
+    --danger:    #e05252;
+    --success:   #52b788;
+    --radius:    8px;
+    --radius-sm: 5px;
+    --shadow:    0 2px 12px rgba(0,0,0,.45);
+    --font:      'DM Sans', system-ui, sans-serif;
+    --mono:      'DM Mono', monospace;
+    --transition: 0.18s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    font-family: var(--font);
+    font-size: 13px;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    min-width: 560px;
+    line-height: 1.5;
+}
+
+.container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 12px auto;
+    display: table;
+    width: calc(100% - 24px);
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.container::before {
+    content: '⬡  WebToEpub';
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+}
+
+h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 10px;
+}
+
+p { margin: 4px 0; color: var(--text-dim); }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent2); text-decoration: underline; }
+
+/* ── Inputs ── */
+input[type=text],
+input[type=url],
+input[type=number],
+textarea,
+select,
+#manualDelayPerChapterTag {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    font-family: var(--font);
+    font-size: 12.5px;
+    max-width: 400px;
+    min-width: 340px;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+}
+
+input[type=text]:focus,
+input[type=url]:focus,
+input[type=number]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(212,168,83,.18);
+}
+
+input[type=checkbox] {
+    accent-color: var(--accent);
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+}
+
+textarea { resize: vertical; }
+textarea.allSpace { width: 100%; height: 100%; box-sizing: border-box; max-width: none; }
+
+/* ── Buttons ── */
+button {
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background var(--transition), border-color var(--transition), color var(--transition);
+    box-shadow: none;
+    max-height: none;
+}
+
+button:hover {
+    background: var(--border2);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+button:active { transform: translateY(1px); }
+button:disabled { opacity: 0.35; cursor: not-allowed; }
+
+#loadAndAnalyseButton,
+#packEpubButton,
+#LibAddToLibrary {
+    background: var(--accent);
+    color: #111;
+    border-color: var(--accent);
+    font-weight: 600;
+}
+
+#loadAndAnalyseButton:hover,
+#packEpubButton:hover,
+#LibAddToLibrary:hover {
+    background: var(--accent2);
+    border-color: var(--accent2);
+    color: #111;
+}
+
+.expandedButton { padding: 7px 16px; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; }
+
+#inputSection table,
+#chapterUrlsTable { width: 100%; }
+
+#inputSection tbody > tr > td:first-child {
+    width: 90px;
+    color: var(--text-dim);
+    font-size: 12px;
+    white-space: nowrap;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+#inputSection tbody > tr > td { padding: 4px 0; }
+#inputSection input { width: 100%; }
+
+table.chapterList { width: 100%; }
+
+#chapterUrlsTable tbody > tr > th {
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    padding: 4px 0;
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+#chapterUrlsTable > tr > td:first-child,
+#chapterUrlsTable > tbody > tr > td:nth-child(2) { width: 3px; }
+
+#chapterUrlsTable input[type=text] {
+    width: 101.5%;
+    position: relative;
+    left: -16px;
+    max-width: 580px;
+}
+
+/* ── Progress ── */
+.progressSection {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    margin-top: 12px;
+    max-width: 648px;
+    min-height: 50px;
+    position: relative;
+}
+
+progress {
+    flex: 1;
+    height: 6px;
+    border-radius: 99px;
+    border: none;
+    background: var(--border2);
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+progress::-webkit-progress-bar { background: var(--border2); border-radius: 99px; }
+progress::-webkit-progress-value {
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    border-radius: 99px;
+    transition: width 0.3s ease;
+}
+progress::-moz-progress-bar {
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    border-radius: 99px;
+}
+
+#progressString {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+    position: static;
+    width: auto;
+    display: inline-block;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* ── Hidden Button Section ── */
+.HiddenButtonSection {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    border-radius: var(--radius);
+    position: relative;
+}
+
+.HiddenButtonSection button {
+    font-size: 11px;
+    color: var(--text-dim);
+    border-color: var(--border);
+    padding: 4px 12px;
+}
+
+.HiddenButtonSection button:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* ── Advanced Options ── */
+#advancedOptionsSection {
+    margin-top: 6px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+#advancedOptionsSection textarea,
+#advancedOptionsSection select,
+#manualDelayPerChapterTag { min-width: inherit !important; }
+
+/* ── Utility ── */
+.withBorder {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+}
+
+.withMargin { margin-left: 5px; }
+.scrollingtable { overflow: scroll; height: 300px; }
+td.disabled { opacity: 0.4; }
+[hidden] { display: none !important; }
+
+.warning {
+    color: var(--danger);
+    font-size: 1.15em;
+    font-weight: 600;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+    background: rgba(10,10,10,.97);
+    border-left: 1px solid var(--border2);
+    float: left;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    transition: 0.22s ease;
+}
+
+.sidebar.sidebarOpen { width: 30%; min-width: 300px; }
+
+.sidebar .closebtn {
+    width: calc(100% - 10px);
+    padding: 8px;
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.sidebar .closebtn:hover { background: var(--border); color: var(--accent); }
+.sidebar th { text-align: center; color: var(--text-dim); font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; }
+.sidebar input.exclude { accent-color: var(--danger); }
+
+.sidebar input[type=text],
+.sidebar input[type=url],
+.sidebar textarea,
+.sidebar select {
+    padding: 5px 8px;
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    max-width: 100%;
+    min-width: 100px;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.sidebar label { display: block; width: 100%; font-size: 13px; padding-bottom: 5px; user-select: none; color: var(--text-dim); }
+.sidebar tr label:hover { background: rgba(255,255,255,.04); }
+#sbFilters { max-height: calc(50% - 30px); overflow-y: scroll; }
+#sbFilters input[type=text], #sbFilters input[type=url], #sbFilters textarea, #sbFilters select { width: calc(100% - 15px); }
+
+/* ── Cover Image ── */
+#coverUrlSection img {
+    max-height: 142px;
+    max-width: 106.5px;
+    position: absolute;
+    top: 14px;
+    right: 7%;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.5);
+}
+
+.LibCover { max-height: 115.5px; max-width: 106.5px; display: block; margin: 0 auto; border-radius: 3px; }
+.LibCoverCompact { display: block; margin: 0 auto; }
+
+img.downloadState { height: 1em; margin-top: 3px; }
+
+.downloadStateDiv { position: relative; display: inline-block; }
+.downloadStateDiv .tooltipText {
+    visibility: hidden;
+    width: 120px;
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border2);
+    text-align: center;
+    padding: 5px 8px;
+    border-radius: var(--radius-sm);
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+    font-size: 11px;
+    white-space: nowrap;
+    box-shadow: var(--shadow);
+}
+.downloadStateDiv:hover .tooltipText { visibility: visible; }
+
+section.minWidth { min-width: 600px; }
+
+/* ── Error Section ── */
+#errorSection {
+    background: var(--bg);
+    border: 1px solid var(--danger);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+}
+
+#errorMessageText pre {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--danger);
+    white-space: pre-wrap;
+    word-break: break-all;
+    margin: 8px 0 0;
+}
+
+#errorSectionTable button { margin-right: 6px; margin-bottom: 4px; }
+
+#hiddenBibSection {
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    margin-top: 10px;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ══════════════════════════════════════════════════════════════
+   ✨  EXTRA VISUAL TRICKS
+══════════════════════════════════════════════════════════════ */
+
+/* ── 1. Animated gradient title ── */
+@keyframes titleSweep {
+    0%   { background-position: 0% center; }
+    50%  { background-position: 100% center; }
+    100% { background-position: 0% center; }
+}
+
+.container::before {
+    background: linear-gradient(90deg,
+        var(--accent2) 0%,
+        var(--accent)  30%,
+        #f5d27a        50%,
+        var(--accent)  70%,
+        var(--accent2) 100%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleSweep 5s ease-in-out infinite;
+    /* keep original border-bottom working */
+    border-bottom: 1px solid var(--border);
+    display: block;
+}
+
+/* ── 2. Progress bar shimmer ── */
+@keyframes shimmerBar {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+progress::-webkit-progress-value {
+    background: linear-gradient(90deg,
+        var(--accent2) 0%,
+        var(--accent)  40%,
+        #fce9a8        55%,
+        var(--accent)  70%,
+        var(--accent2) 100%
+    );
+    background-size: 250% 100%;
+    border-radius: 99px;
+    animation: shimmerBar 2.2s linear infinite;
+}
+
+progress::-moz-progress-bar {
+    background: linear-gradient(90deg,
+        var(--accent2), var(--accent), #fce9a8, var(--accent), var(--accent2)
+    );
+    background-size: 250% 100%;
+    border-radius: 99px;
+    animation: shimmerBar 2.2s linear infinite;
+}
+
+/* ── 3. Primary button breathing glow ── */
+@keyframes breatheGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212,168,83, 0); }
+    50%       { box-shadow: 0 0 10px 4px rgba(212,168,83, 0.30); }
+}
+
+#loadAndAnalyseButton,
+#packEpubButton,
+#LibAddToLibrary {
+    animation: breatheGlow 2.8s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── 4. Button ripple on click ── */
+button { position: relative; overflow: hidden; }
+
+button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 70%);
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+button:active::after {
+    transform: scale(2.5);
+    opacity: 1;
+    transition: 0s;
+}
+
+/* ── 5. Section slide-in reveal ── */
+@keyframes slideReveal {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+section:not([hidden]) {
+    animation: slideReveal 0.22s ease;
+}
+
+/* ── 6. Table row hover highlight ── */
+#chapterUrlsTable tbody tr:hover td,
+#advancedOptionsTable tbody tr:hover td,
+#AdditionalMetadatatable tbody tr:hover td,
+#inputTable tbody tr:hover td {
+    background: rgba(212,168,83, 0.05);
+    transition: background 0.15s ease;
+}
+
+/* ── 7. Tooltip fade-in ── */
+.downloadStateDiv .tooltipText {
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    visibility: visible !important; /* override inline visibility */
+    pointer-events: none;
+}
+
+.downloadStateDiv:hover .tooltipText {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── 8. Ambient glow border on container ── */
+@keyframes borderGlow {
+    0%, 100% { box-shadow: 0 2px 12px rgba(0,0,0,.45), 0 0 0 1px transparent; }
+    50%       { box-shadow: 0 2px 20px rgba(0,0,0,.55), 0 0 0 1px rgba(212,168,83,0.12); }
+}
+
+.container {
+    animation: borderGlow 6s ease-in-out infinite;
+    transition: box-shadow 0.3s ease;
+}
+
+/* ── 9. Input focus glow enhancement ── */
+input[type=text]:focus,
+input[type=url]:focus,
+input[type=number]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(212,168,83,.22), 0 0 8px rgba(212,168,83,.10);
+}
+
+/* ── 10. Scrollbar accent on hover ── */
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ── 11. Error section shake on appear ── */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-5px); }
+    40%       { transform: translateX(5px); }
+    60%       { transform: translateX(-4px); }
+    80%       { transform: translateX(4px); }
+}
+
+#errorSection:not([hidden]) {
+    animation: slideReveal 0.2s ease, shake 0.45s ease 0.1s;
+}
+
+/* ── 12. Cover image float animation ── */
+@keyframes floatImg {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-4px); }
+}
+
+#sampleCoverImg:not([src='']) {
+    animation: floatImg 4s ease-in-out infinite;
+    filter: drop-shadow(0 6px 14px rgba(0,0,0,0.6));
+}
+
+/* ── 13. Chapter URL table row — new row flash ── */
+@keyframes rowFlash {
+    from { background: rgba(212,168,83,0.15); }
+    to   { background: transparent; }
+}
+
+#chapterUrlsTable tbody tr:last-child {
+    animation: rowFlash 0.6s ease;
+}
+
+/* ── 14. Progress bar pulse when at 100% ── */
+@keyframes completePulse {
+    0%, 100% { filter: brightness(1); }
+    50%       { filter: brightness(1.4); }
+}
+
+progress[value='1']::-webkit-progress-value {
+    animation: completePulse 0.8s ease 3;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   Chapter Select Extra (CSE)

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find 'C:\\\\Users\\\\Johny Def\\\\Downloads\\\\WebToEpub - สำเนา' -maxdepth 2 -type f -name *.js -o -name *.mjs)"
+    ]
+  }
+}
