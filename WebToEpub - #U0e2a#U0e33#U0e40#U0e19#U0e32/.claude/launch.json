@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Python HTTP Server",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8080"],
+      "port": 8080
+    },
+    {
+      "name": "Python 3 HTTP Server",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8080"],
+      "port": 8080
+    },
+    {
+      "name": "npx serve",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", ".", "-p", "5500", "--no-clipboard"],
+      "port": 5500
+    },
+    {
+      "name": "npx http-server",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", ".", "-p", "5500", "--cors"],
+      "port": 5500
+    }
+  ]
+}
