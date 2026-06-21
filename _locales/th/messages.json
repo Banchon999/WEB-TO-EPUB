@@ -1,0 +1,801 @@
+{
+	"__MSG_button_Advanced_Options__": {
+		"message": "ตัวเลือกขั้นสูง",
+		"description": ""
+	},
+	"__MSG_button_Lib_Library__": {
+		"message": "คลังหนังสือ",
+		"description": ""
+	},
+	"__MSG_label_Lib_Show_Advanced_Library_Options__": {
+		"message": "แสดงตัวเลือกคลังหนังสือขั้นสูง",
+		"description": ""
+	},
+	"__MSG_label_Lib_Compact_View__": {
+		"message": "แสดงคลังหนังสือแบบกะทัดรัด",
+		"description": ""
+	},
+	"__MSG_label_Lib_Download_Epub_After_Update__": {
+		"message": "ดาวน์โหลด EPUB อัตโนมัติเมื่อมีตอนใหม่เพิ่มเข้ามา",
+		"description": ""
+	},
+	"__MSG_label_Lib_Warning_In_Progress___": {
+		"message": "กำลังดำเนินการ....",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_Clear_Library__": {
+		"message": "ล้างคลังหนังสือ",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_Export_Library__": {
+		"message": "ส่งออกคลังหนังสือ",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_Import_Library__": {
+		"message": "นำเข้าคลังหนังสือ",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_Upload_Epub__": {
+		"message": "อัปโหลด EPUB",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_Add_List_To_Library__": {
+		"message": "เพิ่มนิยายเข้าคลังหนังสือ",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_Update_All__": {
+		"message": "อัปเดตทั้งหมด",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_Delete_EPUB__": {
+		"message": "ลบ EPUB",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_Search_new_Chapters__": {
+		"message": "ค้นหาตอนใหม่",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_Update_new_Chapters__": {
+		"message": "อัปเดต",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_Download_EPUB__": {
+		"message": "ดาวน์โหลด EPUB",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_Add_Chapter_from_different_EPUB__": {
+		"message": "เพิ่มตอนจาก EPUB อื่น",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_Edit_Metadata__": {
+		"message": "แก้ไขข้อมูลเมตา",
+		"description": ""
+	},
+	"__MSG_label_Lib_Template_Library_uses__": {
+		"message": "คลังหนังสือใช้พื้นที่: ",
+		"description": ""
+	},
+	"__MSG_label_Lib_Template_New_Chapter__": {
+		"message": " ตอนใหม่",
+		"description": ""
+	},
+	"__MSG_label_Lib_Template_Story_URL__": {
+		"message": "URL ของเรื่อง",
+		"description": ""
+	},
+	"__MSG_label_Lib_Template_Filename__": {
+		"message": "ชื่อไฟล์",
+		"description": ""
+	},
+	"__MSG_label_Lib_Template_Warning_URL_Change__": {
+		"message": "คำเตือน: เปลี่ยน URL เฉพาะเมื่อคุณรู้ว่ากำลังทำอะไรอยู่",
+		"description": ""
+	},
+	"__MSG_label_Lib_Template_Upload_Epub_File_Label__": {
+		"message": "อัปโหลดไฟล์ EPUB เข้าคลังหนังสือ",
+		"description": ""
+	},
+	"__MSG_button_Lib_Template_": {
+		"message": "ปุ่มที่มองไม่เห็น",
+		"description": ""
+	},
+	"__MSG_button_Apply_Changes__": {
+		"message": "ใช้การเปลี่ยนแปลง",
+		"description": ""
+	},
+	"__MSG_button_Clear_Url__": {
+		"message": "ล้าง URL",
+		"description": ""
+	},
+	"__MSG_button_Close_ReadingList__": {
+		"message": "ปิด",
+		"description": ""
+	},
+	"__MSG_button_Copy_Urls_To_Clipboard__": {
+		"message": "คัดลอก URL ไปยังคลิปบอร์ด",
+		"description": ""
+	},
+	"__MSG_button_Edit_Chapter_Urls__": {
+		"message": "แก้ไข URL ของตอน",
+		"description": ""
+	},
+	"__MSG_button_error_Cancel__": {
+		"message": "ยกเลิก",
+		"description": ""
+	},
+	"__MSG_button_error_Skip__": {
+		"message": "ข้าม",
+		"description": ""
+	},
+	"__MSG_button_error_OK__": {
+		"message": "ตกลง",
+		"description": ""
+	},
+	"__MSG_button_error_Retry__": {
+		"message": "ลองใหม่",
+		"description": ""
+	},
+	"__MSG_button_error_Open_URL__": {
+		"message": "เปิด URL สำหรับ Captcha",
+		"description": ""
+	},
+	"__MSG_button_error_Block_URL__": {
+		"message": "บล็อกเว็บไซต์สำหรับคำขอในอนาคต",
+		"description": ""
+	},
+	"__MSG_button_finished_default_parser__": {
+		"message": "ใช้งาน",
+		"description": ""
+	},
+	"__MSG_button_Help__": {
+		"message": "ช่วยเหลือ...",
+		"description": ""
+	},
+	"__MSG_button_load_and_analyse__": {
+		"message": "โหลดและวิเคราะห์",
+		"description": ""
+	},
+	"__MSG_button_load_Metadata__": {
+		"message": "โหลดข้อมูลเมตาเพิ่มเติม",
+		"description": ""
+	},
+	"__MSG_button_Pack_EPUB__": {
+		"message": "สร้าง EPUB",
+		"description": ""
+	},
+	"__MSG_button_Add_to_Library__": {
+		"message": "เพิ่มเข้าคลังหนังสือ",
+		"description": ""
+	},
+	"__MSG_button_Pause_to_Library__": {
+		"message": "หยุดชั่วคราวไปยังคลังหนังสือ",
+		"description": ""
+	},
+	"__MSG_button_Reset__": {
+		"message": "รีเซ็ต",
+		"description": ""
+	},
+	"__MSG_button_Reload__": {
+		"message": "โหลดใหม่",
+		"description": ""
+	},
+	"__MSG_button_Remove__": {
+		"message": "ลบออก",
+		"description": ""
+	},
+	"__MSG_button_Reset_stylesheet__": {
+		"message": "รีเซ็ตสไตล์ชีตเป็นค่าเริ่มต้น",
+		"description": ""
+	},
+	"__MSG_button_Reverse_Chapter_Urls_Order__": {
+		"message": "กลับลำดับ URL ของตอน",
+		"description": ""
+	},
+	"__MSG_button_Select_All__": {
+		"message": "เลือกทั้งหมด",
+		"description": ""
+	},
+	"__MSG_button_test_default_parser__": {
+		"message": "ทดสอบ",
+		"description": ""
+	},
+	"__MSG_button_Unselect_All__": {
+		"message": "ยกเลิกการเลือกทั้งหมด",
+		"description": ""
+	},
+	"__MSG_button_View_Filters__": {
+		"message": "ตัวกรอง",
+		"description": ""
+	},
+	"__MSG_button_View_Reading_List__": {
+		"message": "ดูรายการที่อ่าน",
+		"description": ""
+	},
+	"__MSG_button_Write_Options_to_file__": {
+		"message": "บันทึกตัวเลือกลงไฟล์",
+		"description": ""
+	},
+	"__MSG_column_Include__": {
+		"message": "รวม?",
+		"description": ""
+	},
+	"__MSG_column_Title__": {
+		"message": "ชื่อเรื่อง",
+		"description": ""
+	},
+	"__MSG_column_URL__": {
+		"message": "URL",
+		"description": ""
+	},
+	"__MSG_label_Add_Information_Page_To_Epub__": {
+		"message": "เพิ่มหน้าข้อมูลลงใน EPUB",
+		"description": ""
+	},
+	"__MSG_label_Advanced_Options_Visible_By_Default__": {
+		"message": "แสดงตัวเลือกขั้นสูงเป็นค่าเริ่มต้น",
+		"description": ""
+	},
+	"__MSG_label_Author__": {
+		"message": "ผู้แต่ง",
+		"description": ""
+	},
+	"__MSG_label_Auto_Parser_Select_Includes_Baka_Tsuki_Series_Page_Parser__": {
+		"message": "การเลือก parser อัตโนมัติรวมถึง Baka-Tsuki Series Page Parser",
+		"description": ""
+	},
+	"__MSG_label_Chapter_Count__": {
+		"message": "จำนวนตอน:",
+		"description": ""
+	},
+	"__MSG_label_Chapters_Page_In_Chapters_List__": {
+		"message": "เพิ่มหน้าที่มีรายชื่อตอนลงในรายการตอน",
+		"description": ""
+	},
+	"__MSG_label_Compress_Images__": {
+		"message": "บีบอัดรูปภาพ",
+		"description": ""
+	},
+	"__MSG_label_Compress_Images_JPG_Cover__": {
+		"message": "จำกัดรูปหน้าปกเป็น JPEG",
+		"description": ""
+	},
+	"__MSG_label_Compress_Images_Format__": {
+		"message": "รูปแบบรูปภาพที่บีบอัด",
+		"description": ""
+	},
+	"__MSG_label_Compress_Images_Resolution__": {
+		"message": "ความละเอียดที่บีบอัด",
+		"description": ""
+	},
+	"__MSG_label_Cover_from_URL__": {
+		"message": "หน้าปกจาก URL:",
+		"description": ""
+	},
+	"__MSG_label_Cover_Image_URL__": {
+		"message": "URL รูปหน้าปก:",
+		"description": ""
+	},
+	"__MSG_label_Create_Epub_3__": {
+		"message": "สร้าง EPUB 3",
+		"description": ""
+	},
+	"__MSG_label_File_Author_as__": {
+		"message": "บันทึกชื่อผู้แต่งเป็น",
+		"description": ""
+	},
+	"__MSG_label_Default_Parser_Chapter_Title_CSS__": {
+		"message": "ตัวเลือก CSS สำหรับ element ที่มีชื่อตอน:",
+		"description": ""
+	},
+	"__MSG_label_Default_Parser_Content_CSS__": {
+		"message": "(จำเป็น) ตัวเลือก CSS สำหรับ element ที่มีเนื้อหาที่จะใส่ใน EPUB:",
+		"description": ""
+	},
+	"__MSG_label_Default_Parser_HostName__": {
+		"message": "ชื่อโฮสต์:",
+		"description": ""
+	},
+	"__MSG_label_Default_Parser_Test_Chapter_Url__": {
+		"message": "URL ของตอนแรก:",
+		"description": ""
+	},
+	"__MSG_label_Default_Parser_Unwanted_Elements_CSS__": {
+		"message": "ตัวเลือก CSS สำหรับ element ที่ต้องการลบออก:",
+		"description": ""
+	},
+	"__MSG_label_Edit_URLs_Hint__": {
+		"message": "คุณสามารถแก้ไข URL ในรูปแบบ HTML หรือเป็นรายการ URL อย่างง่าย (หนึ่ง URL ต่อหนึ่งบรรทัด)",
+		"description": ""
+	},
+	"__MSG_label_Element_With_Chapter_Content__": {
+		"message": "Element ที่มีเนื้อหาของตอน:",
+		"description": ""
+	},
+	"__MSG_label_Filename__": {
+		"message": "ชื่อไฟล์",
+		"description": ""
+	},
+	"__MSG_label_Developer_Stuff__": {
+		"message": "สำหรับนักพัฒนา:",
+		"description": ""
+	},
+	"__MSG_label_Fetch_Highest_Resolution_Images__": {
+		"message": "ดึงรูปภาพความละเอียดสูงสุด",
+		"description": ""
+	},
+	"__MSG_label_Include_in_Reading_List__": {
+		"message": "รวมในรายการที่อ่าน",
+		"description": ""
+	},
+	"__MSG_label_Include_URL_of_Images__": {
+		"message": "รวม URL ของรูปภาพ",
+		"description": ""
+	},
+	"__MSG_label_Language__": {
+		"message": "ภาษา",
+		"description": ""
+	},
+	"__MSG_label_no_additional_metadata__": {
+		"message": "ไม่มีข้อมูลเมตาเพิ่มเติม",
+		"description": ""
+	},
+	"__MSG_label_auto_search_metadata__": {
+		"message": "ค้นหาข้อมูลเมตาอัตโนมัติบน novelupdates (ใช้เวลาโหลดนาน)",
+		"description": ""
+	},
+	"__MSG_label_less_tags__": {
+		"message": "แท็กน้อยลง",
+		"description": ""
+	},
+	"__MSG_label_Show_More_Metadata_Options__": {
+		"message": "แสดงตัวเลือกข้อมูลเมตาเพิ่มเติม",
+		"description": ""
+	},
+	"__MSG_label_Manual_Delay_Per_Chapter__": {
+		"message": "หน่วงเวลาต่อตอน (มิลลิวินาที)",
+		"description": ""
+	},
+	"__MSG_label_Manually_Select_Parser__": {
+		"message": "เลือก parser ด้วยตนเอง:",
+		"description": ""
+	},
+	"__MSG_label_Max_chapters_per_epub__": {
+		"message": "จำนวนตอนสูงสุดต่อ EPUB",
+		"description": ""
+	},
+	"__MSG_label_Max_pages_to_fetch_simultaneously__": {
+		"message": "จำนวนหน้าเว็บสูงสุดที่ดึงพร้อมกัน",
+		"description": ""
+	},
+	"__MSG_label_Metadata_description__": {
+		"message": "คำอธิบาย EPUB",
+		"description": ""
+	},
+	"__MSG_label_Custom_Filename__": {
+		"message": "ชื่อไฟล์กำหนดเอง",
+		"description": ""
+	},
+	"__MSG_label_Metadata_subject__": {
+		"message": "แท็ก",
+		"description": ""
+	},
+	"__MSG_label_Metadata_Save__": {
+		"message": "บันทึกข้อมูลเมตา",
+		"description": ""
+	},
+	"__MSG_label_Metadata_URL__": {
+		"message": "URL ข้อมูลเมตาเพิ่มเติม",
+		"description": ""
+	},
+	"__MSG_label_Override_Default_Minimum_Delay__": {
+		"message": "แทนที่ค่าหน่วงเวลาต่อตอน (ในกรณีที่ใช้ได้)",
+		"description": ""
+	},
+	"__MSG_label_Overwrite_Epub_When_Filename_Duplicte__": {
+		"message": "เขียนทับไฟล์ EPUB ที่มีชื่อเดียวกัน",
+		"description": ""
+	},
+	"__MSG_label_Password__": {
+		"message": "รหัสผ่าน",
+		"description": ""
+	},
+	"__MSG_label_Range_End_Chapter__": {
+		"message": "ตอนสุดท้าย",
+		"description": ""
+	},
+	"__MSG_label_Range_Start_Chapter__": {
+		"message": "ตอนแรก",
+		"description": ""
+	},
+	"__MSG_label_Read_Options_from_file__": {
+		"message": "อ่านตัวเลือกจากไฟล์:",
+		"description": ""
+	},
+	"__MSG_label_Remove_Author_Notes__": {
+		"message": "ลบบันทึกของผู้แต่ง",
+		"description": ""
+	},
+	"__MSG_label_Remove_Chapter_Number__": {
+		"message": "ลบหมายเลขตอน",
+		"description": ""
+	},
+	"__MSG_label_Remove_Original__": {
+		"message": "ลบข้อความต้นฉบับ/ดิบ",
+		"description": ""
+	},
+	"__MSG_label_Select_Translation_Google__": {
+		"message": "ดาวน์โหลดต้นฉบับ (ไม่ต้องล็อกอิน)",
+		"description": ""
+	},
+	"__MSG_label_Select_Retry_Longer__": {
+		"message": "ลองตอนใหม่นานสูงสุด 1 ชม. (ดูเหมือน WebToEpub ค้าง)",
+		"description": ""
+	},
+	"__MSG_label_Remove_Translated__": {
+		"message": "ลบข้อความที่แปลแล้ว",
+		"description": ""
+	},
+	"__MSG_label_Remove_Duplicate_Images__": {
+		"message": "ลบรูปภาพที่ซ้ำกัน:",
+		"description": ""
+	},
+	"__MSG_label_Remove_Superscript_From_Alternate_Translations__": {
+		"message": "ลบตัวยกออกจากคำแปลทางเลือก",
+		"description": ""
+	},
+	"__MSG_label_Series__": {
+		"message": "ชุด",
+		"description": ""
+	},
+	"__MSG_label_Show_Chapter_Urls__": {
+		"message": "แสดง URL ของตอน",
+		"description": ""
+	},
+	"__MSG_label_Skip_Images__": {
+		"message": "ข้ามรูปภาพ",
+		"description": ""
+	},
+	"__MSG_label_Starting_URL__": {
+		"message": "URL เริ่มต้น",
+		"description": ""
+	},
+	"__MSG_label_Skip_Chapters_That_Fail_Fetch__": {
+		"message": "ข้ามตอนที่คืนค่าข้อผิดพลาด HTTP 404",
+		"description": ""
+	},
+	"__MSG_label_Stylesheet__": {
+		"message": "สไตล์ชีต:",
+		"description": ""
+	},
+	"__MSG_label_Theme__": {
+		"message": "ธีม",
+		"description": ""
+	},
+	"__MSG_label_Title__": {
+		"message": "ชื่อเรื่อง",
+		"description": ""
+	},
+	"__MSG_label_Translator__": {
+		"message": "ผู้แปล",
+		"description": ""
+	},
+	"__MSG_label_Use_Full_Title_As_File_Name__": {
+		"message": "ใช้ชื่อเรื่องเต็มเป็นชื่อไฟล์",
+		"description": ""
+	},
+	"__MSG_label_Use_SVG_for_Images__": {
+		"message": "ใช้ <svg> สำหรับรูปภาพ",
+		"description": ""
+	},
+	"__MSG_label_Remove_Next_and_Previous_Chapter_Hyperlinks__": {
+		"message": "ลบไฮเปอร์ลิงก์ตอนถัดไปและตอนก่อนหน้า",
+		"description": ""
+	},
+	"__MSG_label_Using_Default_Parser__": {
+		"message": "ไม่พบ parser สำหรับ URL นี้ จะใช้ parser เริ่มต้น โปรดระบุวิธีดึงเนื้อหาจากแต่ละหน้าเว็บ",
+		"description": ""
+	},
+	"__MSG_label_Volume__": {
+		"message": "เล่ม",
+		"description": ""
+	},
+	"__MSG_label_No_Download_Popup__": {
+		"message": "ไม่ต้องแสดงกล่อง 'บันทึกเป็น' เมื่อบันทึก EPUB",
+		"description": ""
+	},
+	"__MSG_label_Disable_Shift_Click_Alert__": {
+		"message": "ปิดการแจ้งเตือนการเลือกด้วย Shift+คลิก",
+		"description": ""
+	},
+	"__MSG_label_Disable_Image_Res_Error__": {
+		"message": "ปิดคำเตือนการดึงรูปภาพความละเอียดสูงล้มเหลว",
+		"description": ""
+	},
+	"__MSG_label_Disable_Webp_Image_Format_Error__": {
+		"message": "ปิดคำเตือนความเข้ากันได้ของรูปแบบรูปภาพ WebP",
+		"description": ""
+	},
+	"__MSG_label_Write_Error_History_To_File__": {
+		"message": "บันทึกข้อความข้อผิดพลาดลงไฟล์",
+		"description": ""
+	},
+	"__MSG_More_than_max_chapters_selected__": {
+		"message": "ข้อควรระวัง: มีการเลือก $selectedCount$ ตอนเพื่อใส่ใน EPUB คลิก 'ตกลง' หากต้องการรวมทั้งหมด หรือคลิก 'ยกเลิก' หากต้องการเฉพาะ $maxChapters$ ตอนแรก",
+		"description": "",
+		"placeholders": {
+			"selectedCount": {
+			    "content": "$1"
+			},
+			"maxChapters": {
+			    "content": "$2"
+			}
+		}
+	},
+	"__MSG_option_Class_Is__": {
+		"message": "คลาสคือ",
+		"description": ""
+	},
+	"__MSG_option_Class_Starts_With__": {
+		"message": "คลาสขึ้นต้นด้วย",
+		"description": ""
+	},
+	"__MSG_option_First_Found__": {
+		"message": "พบรายการแรก",
+		"description": ""
+	},
+	"__MSG_option_ID_Is__": {
+		"message": "ID คือ",
+		"description": ""
+	},
+	"__MSG_option_ID_Starts_With__": {
+		"message": "ID ขึ้นต้นด้วย",
+		"description": ""
+	},
+	"__MSG_option_ID_Theme_Always_Dark__": {
+		"message": "โหมดมืดเสมอ",
+		"description": ""
+	},
+	"__MSG_option_ID_Theme_Always_Light__": {
+		"message": "โหมดสว่างเสมอ",
+		"description": ""
+	},
+	"__MSG_option_ID_Theme_OS_Selection__": {
+		"message": "ใช้การตั้งค่าปัจจุบันของระบบปฏิบัติการ",
+		"description": ""
+	},
+	"__MSG_Searching_For_URLs_Please_Wait__": {
+		"message": "กำลังค้นหา URL โปรดรอสักครู่",
+		"description": ""
+	},
+	"__MSG_option_value_auto__": {
+		"message": "อัตโนมัติ",
+		"description": ""
+	},
+	"__MSG_Shift_Click__": {
+		"message": "คุณสามารถเลือกหรือยกเลิกการเลือกช่วงของตอนได้โดยคลิกที่ช่องของตอนแรก จากนั้นกดปุ่ม Shift ค้างไว้แล้วคลิกตอนสุดท้ายในช่วงนั้น",
+		"description": ""
+	},
+	"__MSG_Tooltip_chapter_downloading__": {
+		"message": "กำลังดาวน์โหลดตอน",
+		"description": ""
+	},
+	"__MSG_Tooltip_chapter_downloaded__": {
+		"message": "ดาวน์โหลดแล้ว",
+		"description": ""
+	},
+	"__MSG_Tooltip_chapter_sleeping__": {
+		"message": "กำลังรอให้ครบเวลาหน่วงของตอน",
+		"description": ""
+	},
+	"__MSG_Tooltip_chapter_previously_downloaded__": {
+		"message": "ตอนนี้เคยดาวน์โหลดแล้ว",
+		"description": ""
+	},
+	"chapterPlaceholderMessage": {
+		"message": "นี่คือตัวแทนชั่วคราว การพยายามดึงตอนจาก '$url$' ล้มเหลวด้วยข้อผิดพลาด: \r\n $error$",
+		"description": "",
+		"placeholders": {
+			"url": {
+			    "content": "$1"
+			},
+			"error": {
+			    "content": "$2"
+			}
+		}
+	},
+	"convertToXhtmlWarning": {
+		"message": "คำเตือน: ไม่สามารถแปลงตอน '$chapter$' จาก '$url$' เป็น XHTML ที่ถูกต้องได้ โปรแกรมอ่าน epub ของคุณอาจล้มเหลวเมื่อดูตอนนี้ คุณอาจต้องแก้ไขตอนนี้ด้วยตนเองด้วย Calibre \r\nข้อความข้อผิดพลาดการแปลงคือ: ($error$)",
+		"description": "",
+		"placeholders": {
+			"chapter": {
+			    "content": "$1"
+			},
+			"url": {
+			    "content": "$2"
+			},
+			"error": {
+			    "content": "$3"
+			}
+		}
+	},
+	"defaultAuthor": {
+		"message": "ไม่ได้ระบุผู้แต่ง",
+		"description": ""
+	},
+	"defaultTitle": {
+		"message": "ไม่ได้ระบุชื่อเรื่อง",
+		"description": ""
+	},
+	"defaultUUID": {
+		"message": "ไม่ได้ระบุ UUID",
+		"description": ""
+	},
+	"errorEditMetadata": {
+		"message": "เกิดข้อผิดพลาดระหว่างการแก้ไขข้อมูลเมตา ไม่พบสตริงที่จะแทนที่ใน OEBPS/content.opf",
+		"description": ""
+	},
+	"errorAddToLibraryLibraryAddPageWithChapters": {
+		"message": "\"เพิ่มเข้าคลังหนังสือ\" ใช้ไม่ได้เมื่อเปิดตัวเลือกขั้นสูง \"เพิ่มหน้าที่มีรายชื่อตอนลงในรายการตอน\"",
+		"description": ""
+	},
+	"errorContentNotFound": {
+		"message": "ไม่พบ element เนื้อหาสำหรับหน้าเว็บ '$url$'",
+		"description": "",
+		"placeholders": {
+			"url": {
+			    "content": "$1"
+			}
+		}
+	},
+	"errorIllegalFileName": {
+		"message": "ชื่อไฟล์ '$filename$' ต้องไม่มีอักขระต่อไปนี้: $illegalCharacters$",
+		"description": "",
+		"placeholders": {
+			"filename": {
+			    "content": "$1"
+			},
+			"illegalCharacters": {
+			    "content": "$2"
+			}
+		}
+	},
+	"gotHtmlExpectedImageWarning": {
+		"message": "การพยายามดึงรูปภาพความละเอียดสูงจาก '$url$' ล้มเหลว จะใช้รูปภาพความละเอียดต่ำกว่าแทน",
+		"description": "",
+		"placeholders": {
+			"url": {
+			    "content": "$1"
+			}
+		}
+	},
+	"httpFetchCanRetry": {
+		"message": "นี่เป็นข้อผิดพลาดชั่วคราว หากลองใหม่ในอีกไม่กี่นาทีอาจสำเร็จ",
+		"description": ""
+	},
+	"htmlFetchFailed": {
+		"message": "การดึง URL '$url$' ล้มเหลวด้วยข้อผิดพลาดเครือข่าย $err$",
+		"description": "",
+		"placeholders": {
+			"url": {
+			    "content": "$1"
+			},
+			"err": {
+			    "content": "$2"
+			}
+		}
+	},
+	"imageFetchFailed": {
+		"message": "การดึงรูปภาพ '$imageUrl$' สำหรับหน้า '$pageUrl$' ล้มเหลวด้วยข้อผิดพลาดเครือข่าย $err$",
+		"description": "",
+		"placeholders": {
+			"imageUrl": {
+			    "content": "$1"
+			},
+			"pageUrl": {
+			    "content": "$2"
+			},
+			"err": {
+			    "content": "$3"
+			}
+		}
+	},
+	"imgurFetchFailed": {
+		"message": "คำเตือน: การพยายามดึงรูปภาพ imgur '$imageUrl$' สำหรับหน้า '$pageUrl$' ล้มเหลวด้วยข้อผิดพลาดเครือข่าย $err$",
+		"description": "",
+		"placeholders": {
+			"imageUrl": {
+			    "content": "$1"
+			},
+			"pageUrl": {
+			    "content": "$2"
+			},
+			"err": {
+			    "content": "$3"
+			}
+		}
+	},
+	"noChaptersFound": {
+		"message": "ไม่พบตอน นี่อาจไม่ใช่หน้ารายละเอียดของนิยาย",
+		"description": ""
+	},
+	"informationPageTitle": {
+		"message": "ข้อมูล",
+		"description": ""
+	},
+	"noChaptersFoundAndFetchClicked": {
+		"message": "ไม่พบตอน",
+		"description": ""
+	},
+	"noImagesFound": {
+		"message": "ไม่พบรูปภาพ",
+		"description": ""
+	},
+	"noImagesFoundLabel": {
+		"message": "ไม่พบรูปภาพ",
+		"description": ""
+	},
+	"noParserFound": {
+		"message": "ไม่พบ parser สำหรับ URL นี้ จะใช้ parser เริ่มต้น คุณจะต้องระบุวิธีดึงเนื้อหาสำหรับแต่ละตอน",
+		"description": ""
+	},
+	"parserDisabledNotification": {
+		"message": "การรองรับเว็บไซต์นี้ถูกปิดใช้งานตามคำขอของเจ้าของเว็บไซต์",
+		"description": ""
+	},
+	"setCover": {
+		"message": "ตั้งเป็นหน้าปก",
+		"description": ""
+	},
+	"tableOfContentsUrl": {
+		"message": "URL สารบัญ: ",
+		"description": ""
+	},
+	"unhandledFieldTypeError": {
+		"message": "ข้อผิดพลาด: ประเภทฟิลด์ที่ไม่ได้จัดการ",
+		"description": ""
+	},
+	"warning403ErrorResponse": {
+		"message": "คำเตือน: เว็บไซต์ '$host$' ได้ส่งข้อผิดพลาดปฏิเสธการเข้าถึง (403)\nคุณอาจต้องล็อกอินเข้าเว็บไซต์ หรือเปิดเว็บไซต์ตามปกติ\nจนกว่าจะเจอหน้า Cloudflare \"คุณเป็นมนุษย์หรือไม่\" หรือผ่าน CAPTCHA อื่น\nก่อนที่ WebToEpub จะทำงานต่อได้\nกรณีนี้เกิดขึ้นหากคุณดาวน์โหลดเร็วเกินไป ลองเพิ่มค่า 'ตัวเลือกขั้นสูง -> หน่วงเวลาต่อตอน (มิลลิวินาที)'\n",
+		"description": "",
+		"placeholders": {
+			"host": {
+				"content": "$1"
+			}
+		}
+	},
+	"wait403ErrorResponse": {
+		"message": "รอจนกว่าคุณจะผ่าน cloudflare หรือล็อกอินแล้ว",
+		"description": ""
+	},
+	"warning429ErrorResponse": {
+		"message": "คำเตือน: เว็บไซต์ '$host$' ได้ขอให้ WebToEpub ลดอัตราการขอตอนลง WebToEpub จะรอจนกว่าเว็บไซต์จะอนุญาตให้ขอตอนได้อีกครั้ง อย่างไรก็ตาม หากวิธีนี้ไม่ได้ผล คุณอาจต้องปรับด้วยตนเอง ที่ 'ตัวเลือกขั้นสูง' -> เพิ่มค่า 'หน่วงเวลาต่อตอน (มิลลิวินาที)'",
+		"description": "",
+		"placeholders": {
+			"host": {
+				"content": "$1"
+			}
+		}
+	},
+	"warningNoChapterUrl": {
+		"message": "ข้อผิดพลาด: ไม่ได้ระบุ URL ของตอนสำหรับใช้ทดสอบ",
+		"description": ""
+	},
+	"warningNoVisibleContent": {
+		"message": "คำเตือน: element เนื้อหาสำหรับหน้าเว็บ '$url$' ไม่มีเนื้อหาที่มองเห็นได้",
+		"description": "",
+		"placeholders": {
+			"url": {
+			    "content": "$1"
+			}
+		}
+	},
+	"warningWebpImage": {
+		"message": "คำเตือน: ไฟล์รูปภาพ '$filename$' อยู่ในรูปแบบ webp โปรแกรมอ่าน epub ของคุณอาจไม่สามารถแสดงผลได้",
+		"description": "",
+		"placeholders": {
+			"filename": {
+			    "content": "$1"
+			}
+		}
+	}
+}
