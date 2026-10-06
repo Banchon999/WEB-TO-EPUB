@@ -1,8 +1,9 @@
 "use strict";
 
-parserFactory.register("gravitytales.com", () => new GravityTalesParser());
+// site now runs the Fictioneer WordPress theme
+parserFactory.register("gravitytales.com", () => new FictioneerParser());
 
-class GravityTalesParser extends Parser {
+class GravityTalesParser extends Parser { // eslint-disable-line no-unused-vars
     constructor() {
         super();
     }

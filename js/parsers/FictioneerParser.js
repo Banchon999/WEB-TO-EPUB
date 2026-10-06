@@ -55,10 +55,11 @@ class FictioneerParser extends Parser {
     findContent(dom) {
         const content =
             dom.querySelector(".chapter-formatting") ||
-            dom.querySelector("#chapter-content");
+            dom.querySelector("#chapter-content") ||
+            dom.querySelector(".fcn-chapter-content");
 
         const footnotes = dom.querySelector(".chapter__footnotes");
-        if (footnotes) { content.appendChild(footnotes); }
+        if (content && footnotes) { content.appendChild(footnotes); }
 
         return content;
     }
