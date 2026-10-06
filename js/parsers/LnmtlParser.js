@@ -87,7 +87,7 @@ class LnmtlParser extends Parser {
     }
 
     static makeChapterListUrl(volumeId, page) {
-        return `http://lnmtl.com/chapter?page=${page}&volumeId=${volumeId}`;
+        return `https://lnmtl.com/chapter?page=${page}&volumeId=${volumeId}`;
     }
 
     static mergeChapterLists(lists) {
