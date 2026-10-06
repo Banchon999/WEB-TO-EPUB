@@ -10,7 +10,8 @@ class PuretlParser extends Parser {
     async getChapterUrls(dom) {
         let menu = dom.querySelector("ul.accordion-items-container")
             || dom.querySelector("ul.archive-group-list");
-        return util.hyperlinksToChapterList(menu);
+        // skip archive filter links such as "?year=2022"
+        return util.hyperlinksToChapterList(menu, a => a.search === "");
     }
 
     findContent(dom) {
