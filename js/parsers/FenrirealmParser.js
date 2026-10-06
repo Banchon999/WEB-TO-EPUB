@@ -8,6 +8,20 @@ class FenrirealmParser extends Parser {
     }
 
     async getChapterUrls(dom) {
+        // the page only renders one range of chapters, the API returns all of them
+        let slug = new URL(dom.baseURI).pathname.split("/")[2];
+        try {
+            let chapters = (await HttpClient.fetchJson(`https://fenrirealm.com/api/new/v2/series/${slug}/chapters`)).json;
+            if (Array.isArray(chapters) && 0 < chapters.length) {
+                return chapters.map(c => ({
+                    sourceUrl: `https://fenrirealm.com/series/${slug}/${c.slug}`,
+                    title: [c.name, c.title].filter(t => t).map(t => t.trim()).join(": "),
+                    isIncludeable: (c.locked?.price ?? 0) === 0 || c.locked?.unlocked_at != null
+                }));
+            }
+        } catch (err) {
+            // fall back to chapters rendered on the page
+        }
         let menu = dom.querySelector(".grid-chapter");
         return [...menu.querySelectorAll("a")]
             .map(a => this.hyperLinkToChapter(a))
@@ -30,8 +44,11 @@ class FenrirealmParser extends Parser {
     }
 
     findChapterTitle(dom) {
-        let titleText = dom.querySelector("h1").textContent;
-        return this.removeDuplicatedChapterPrefix(titleText);
+        let titleElement = dom.querySelector(".chapter-view h2, h1");
+        if (titleElement === null) {
+            return null;
+        }
+        return this.removeDuplicatedChapterPrefix(titleElement.textContent.trim());
     }
 
     removeDuplicatedChapterPrefix(titleText) {

@@ -81,9 +81,20 @@ class EstarParser extends Parser {
     buildChapter(dom, url) {
         let newDoc = Parser.makeEmptyDocForContent(url);
         let title = newDoc.dom.createElement("h1");
-        title.textContent = dom.querySelector("h1.subject").textContent;
+        title.textContent = dom.querySelector("h1.subject")?.textContent ?? "";
         newDoc.content.appendChild(title);
-        let text = dom.querySelector(".mainBody .content").textContent;
+        // section-title pages have no content; illustration pages contain only images
+        let content = dom.querySelector(".mainBody .content");
+        if (content === null) {
+            return newDoc.dom;
+        }
+        for (let img of content.querySelectorAll("img")) {
+            let image = newDoc.dom.createElement("img");
+            image.src = img.src;
+            image.alt = img.alt;
+            newDoc.content.appendChild(image);
+        }
+        let text = content.textContent;
         text = text.replace("\n\n", "\n");
         text = text.split("\n");
         let br = newDoc.dom.createElement("br");
