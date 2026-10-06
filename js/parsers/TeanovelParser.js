@@ -10,6 +10,19 @@ class TeanovelParser extends Parser {
     }
 
     async getChapterUrls(dom) {
+        // novel URL is /novel/<slug>, possibly followed by a chapter number
+        let slug = new URL(dom.baseURI).pathname.split("/")[2];
+        try {
+            let json = (await HttpClient.fetchJson(`https://www.teanovel.com/api/novel/chapter-list?slug=${slug}`)).json;
+            if (json?.success && Array.isArray(json.data) && 0 < json.data.length) {
+                return json.data.map(c => ({
+                    sourceUrl: `https://www.teanovel.com/novel/${slug}/${c.order}`,
+                    title: `Chapter ${c.order}: ${c.title}`
+                }));
+            }
+        } catch (err) {
+            // fall back to the old chapter-list page
+        }
         let storyName = new URL(dom.baseURI).pathname.split("/").pop();
         let tocUrl = `https://www.teanovel.com/novel/${storyName}/chapter-list`;
         let chapterDom = (await HttpClient.fetchHtml(tocUrl)).responseXML;

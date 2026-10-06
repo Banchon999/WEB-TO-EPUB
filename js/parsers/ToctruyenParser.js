@@ -22,7 +22,10 @@ class ToctruyenParser extends Parser {
     }
 
     findContent(dom) {
-        return dom.querySelector(".novel-reading-content .novel-reading-viewport");
+        return dom.querySelector(".novel-reading-content .novel-reading-viewport")
+            || [...dom.querySelectorAll(".novel-reading-content > div")]
+                .find(d => d.id === "" && d.querySelector("p") !== null)
+            || null;
     }
 
     findChapterTitle(dom) {
