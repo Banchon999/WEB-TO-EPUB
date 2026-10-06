@@ -51,15 +51,23 @@ class NoblemtlParser extends Parser {
     }
 
     async getChapterUrls(dom) {
-        return [...dom.querySelectorAll("div.eplister a")]
-            .map(this.linkToChapter)
-            .reverse();
+        let chapters = [...dom.querySelectorAll("div.eplister a")]
+            .filter(a => a.href !== dom.baseURI)
+            .map(this.linkToChapter);
+        // the theme usually lists newest first, but some sites list oldest first
+        return NoblemtlParser.isNewestFirst(chapters) ? chapters.reverse() : chapters;
+    }
+
+    static isNewestFirst(chapters) {
+        let num = (c) => parseFloat(c.title.match(/\d+(\.\d+)?/)?.[0] ?? "NaN");
+        let numbered = chapters.map(num).filter(n => !isNaN(n));
+        return numbered.length < 2 || numbered[numbered.length - 1] <= numbered[0];
     }
 
     linkToChapter(link) {
         let titleName = link.querySelector(".epl-title")?.textContent?.trim() ?? "";
-        let title = NoblemtlParser.extractChapterNum(link).trim() + " "
-            + titleName;
+        let title = (NoblemtlParser.extractChapterNum(link).trim() + " "
+            + titleName).trim() || link.textContent.trim();
         return ({
             sourceUrl:  link.href,
             title: title
@@ -68,6 +76,9 @@ class NoblemtlParser extends Parser {
 
     static extractChapterNum(link) {
         let eplnum = link.querySelector(".epl-num");
+        if (eplnum === null) {
+            return "";
+        }
         let chapnum = eplnum.querySelector(".chapter_num");
         return chapnum == null
             ? eplnum.textContent
