@@ -6,7 +6,7 @@ class AlphapolisParser extends Parser {
         this.minimumThrottle = 15000;
     }
     async getChapterUrls(dom) {
-        let menu = dom.querySelector("div.episodes");
+        let menu = dom.querySelector("div.episodes, div.p-table-of-contents__episodes");
         return util.hyperlinksToChapterList(menu);
     }
     findContent(dom) {
