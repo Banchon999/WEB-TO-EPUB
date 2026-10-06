@@ -8,7 +8,7 @@ class IndowebnovelParser extends Parser {
     }
 
     async getChapterUrls(dom) {
-        let menu = dom.querySelector("div.lightnovel-episode");
+        let menu = dom.querySelector("div.lightnovel-episode, div.series-chapter");
         return util.hyperlinksToChapterList(menu)
             .map(this.adjustChapterTitle)
             .reverse();
@@ -26,7 +26,8 @@ class IndowebnovelParser extends Parser {
 
     findContent(dom) {
         return [...dom.querySelectorAll("div")]
-            .filter(d => d.className === "123")[0];
+            .filter(d => d.className === "123")[0]
+            || dom.querySelector("div#content");
     }
 
     extractTitleImpl(dom) {
