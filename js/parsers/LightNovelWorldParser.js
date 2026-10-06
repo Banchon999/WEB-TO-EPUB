@@ -47,7 +47,9 @@ class LightNovelWorldParser extends Parser {
     }
 
     linkToChapterIfo(link) {
-        let title = link.querySelector(".chapter-title").textContent.trim();
+        let title = (link.querySelector(".chapter-title")?.textContent
+            ?? link.getAttribute("title")
+            ?? link.textContent).trim();
         const isChapter = title.toLowerCase().includes("chapter");
         let chaperNo = link.querySelector(".chapter-no")?.textContent?.trim() ?? "";
         if (!isChapter && chaperNo !== "") {
@@ -158,6 +160,28 @@ class FindNovelParser extends LightNovelWorldParser {
     removeUnwantedElementsFromContentElement(element) {
         util.removeHTMLUnknownElement(element);
         super.removeUnwantedElementsFromContentElement(element);
+    }
+
+    async fetchChapter(url) {
+        let dom = (await HttpClient.wrapFetch(url)).responseXML;
+        if (this.findContent(dom) === null) {
+            // site may answer with a "Loading..." page that redirects to a mirror (e.g. novelpeak.org)
+            let redirectUrl = FindNovelParser.extractScriptRedirect(dom);
+            if (redirectUrl !== null) {
+                dom = (await HttpClient.wrapFetch(redirectUrl)).responseXML;
+            }
+        }
+        return dom;
+    }
+
+    static extractScriptRedirect(dom) {
+        for (let script of dom.querySelectorAll("script")) {
+            let match = script.textContent.match(/window\.location\.href\s*=\s*"([^"]+)"/);
+            if (match) {
+                return match[1].replace(/\\\//g, "/");
+            }
+        }
+        return null;
     }
 }
 
