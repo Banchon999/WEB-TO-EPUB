@@ -5,10 +5,11 @@ parserFactory.register("scribblehub.com", () => new ScribblehubParser());
 class ScribblehubParser extends Parser {
     constructor() {
         super();
-        this.minimumThrottle = 5000;
+        this.minimumThrottle = 7500;
     }
 
     async getChapterUrls(dom, chapterUrlsUI) {
+        this.tocURL = dom.baseURI;
         let baseUrl = dom.baseURI;
         let nextTocIndex = 1;
         let numChapters = parseInt(dom.querySelector("span.cnt_toc").textContent);
@@ -19,20 +20,58 @@ class ScribblehubParser extends Parser {
                 ? `${baseUrl}?toc=${++nextTocIndex}`
                 : null;
         };
-        let saveThrottle = this.minimumThrottle;
-        this.minimumThrottle = 0;
         let chapters = (await this.walkTocPages(dom,
             ScribblehubParser.getChapterUrlsFromTocPage,
             nextTocPageUrl,
             chapterUrlsUI
         )).reverse();
-        this.minimumThrottle = saveThrottle;
         return chapters;
     }
 
     static getChapterUrlsFromTocPage(dom) {
         return [...dom.querySelectorAll("a.toc_a")]
             .map(a => util.hyperLinkToChapter(a));
+    }
+
+    async fetchChapter(url) {
+        let rules = [
+            {
+                id: 1,
+                priority: 1,
+                action: {
+                    type: "modifyHeaders",
+                    requestHeaders: [
+                        {
+                            header: "referer",
+                            operation: "set",
+                            value: this.tocURL,
+                        },
+                        {
+                            header: "sec-fetch-dest",
+                            operation: "set",
+                            value: "document",
+                        },
+                        {
+                            header: "sec-fetch-mode",
+                            operation: "set",
+                            value: "navigate",
+                        },
+                        {
+                            header: "sec-fetch-site",
+                            operation: "set",
+                            value: "same-origin",
+                        },
+                    ],
+                },
+                condition: {
+                    urlFilter: "*://www.scribblehub.com/*",
+                },
+            },
+        ];
+
+        await HttpClient.setDeclarativeNetRequestRules(rules);
+
+        return (await HttpClient.wrapFetch(url)).responseXML;
     }
 
     findContent(dom) {
