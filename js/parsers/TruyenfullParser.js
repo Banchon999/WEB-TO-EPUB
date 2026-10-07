@@ -1,6 +1,7 @@
 "use strict";
 
 parserFactory.register("truyenfull.vn", () => new TruyenfullParser());
+parserFactory.register("truyenfull.live", () => new TruyenfullParser());
 
 class TruyenfullParser extends Parser {
     constructor() {
