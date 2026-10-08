@@ -24,7 +24,7 @@ class WuxiacityParser extends Parser {
     }
 
     findContent(dom) {
-        return dom.querySelector("#chapter-content");
+        return dom.querySelector("#chapter-content, .chapter-content");
     }
 
     extractTitleImpl(dom) {

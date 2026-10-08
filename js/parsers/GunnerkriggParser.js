@@ -20,10 +20,17 @@ class GunnerkriggParser extends Parser {
     }
 
     findContent(dom) {
-        let content = dom.querySelector("div.comic");
+        let content = dom.querySelector("div.comic, main.comic > div.inner");
         if (content !== null) {
             util.removeChildElementsMatchingSelector(content, ".nav, .extra");
         }
         return content;
+    }
+
+    customRawDomToContentStep(chapter, content) {
+        // comic image is wrapped in a link to the next page, which "remove next/previous links" would delete
+        for (let link of [...content.querySelectorAll("a")].filter(a => a.querySelector("img") !== null)) {
+            link.replaceWith(...link.childNodes);
+        }
     }
 }

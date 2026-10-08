@@ -40,10 +40,14 @@ class EstarParser extends Parser {
             headers: header
         };
         bookinfo = (await HttpClient.fetchJson(fetchUrl, options)).json;
-        let chapters = bookinfo.data.novel.episodes.nodes.map(a => ({
-            sourceUrl: "https://estar.jp/novels/"+bookinfo.data.novel.workId+"/viewer?page="+a.pageNo, 
-            title: a.title
-        }));
+        let nodes = bookinfo.data.novel.episodes.nodes;
+        // an episode can span several viewer pages, up to where the next episode starts
+        this.episodeEndPage = new Map();
+        let chapters = nodes.map((a, i) => {
+            let sourceUrl = "https://estar.jp/novels/"+bookinfo.data.novel.workId+"/viewer?page="+a.pageNo;
+            this.episodeEndPage.set(sourceUrl, nodes[i + 1]?.pageNo ?? null);
+            return { sourceUrl: sourceUrl, title: a.title };
+        });
         return chapters;
     }
 
@@ -75,24 +79,52 @@ class EstarParser extends Parser {
 
     async fetchChapter(url) {
         let dom = (await HttpClient.wrapFetch(url)).responseXML;
-        return this.buildChapter(dom, url);
+        let newDoc = this.buildChapter(dom, url);
+        let pageNo = parseInt(new URL(url).searchParams.get("page"));
+        // last episode: no known end, stop when the site redirects past the last page
+        let endPage = this.episodeEndPage?.get(url) ?? (pageNo + 500);
+        for (let page = pageNo + 1; page < endPage; ++page) {
+            let pageUrl = url.replace(/page=\d+/, "page=" + page);
+            let xhr = await HttpClient.wrapFetch(pageUrl);
+            if (new URL(xhr.response.url).searchParams.get("page") != page) {
+                break;
+            }
+            this.appendPageContent(newDoc.dom, xhr.responseXML);
+        }
+        return newDoc.dom;
     }
 
     buildChapter(dom, url) {
         let newDoc = Parser.makeEmptyDocForContent(url);
         let title = newDoc.dom.createElement("h1");
-        title.textContent = dom.querySelector("h1.subject").textContent;
+        title.textContent = dom.querySelector("h1.subject")?.textContent ?? "";
         newDoc.content.appendChild(title);
-        let text = dom.querySelector(".mainBody .content").textContent;
+        this.appendPageContent(newDoc.dom, dom);
+        return newDoc;
+    }
+
+    appendPageContent(doc, dom) {
+        let target = Parser.findConstrutedContent(doc);
+        // section-title pages have no content; illustration pages contain only images
+        let content = dom.querySelector(".mainBody .content");
+        if (content === null) {
+            return;
+        }
+        for (let img of content.querySelectorAll("img")) {
+            let image = doc.createElement("img");
+            image.src = img.src;
+            image.alt = img.alt;
+            target.appendChild(image);
+        }
+        let text = content.textContent;
         text = text.replace("\n\n", "\n");
         text = text.split("\n");
-        let br = newDoc.dom.createElement("br");
+        let br = doc.createElement("br");
         for (let element of text) {
-            let pnode = newDoc.dom.createElement("p");
+            let pnode = doc.createElement("p");
             pnode.textContent = element;
-            newDoc.content.appendChild(pnode);
-            newDoc.content.appendChild(br);
+            target.appendChild(pnode);
+            target.appendChild(br);
         }
-        return newDoc.dom;
     }
 }

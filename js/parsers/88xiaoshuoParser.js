@@ -27,6 +27,14 @@ class _88xiaoshuoParser extends Parser {
         if (changedomurl != dom.baseURI) {
             dom = (await HttpClient.fetchHtml(changedomurl)).responseXML;
         }
+        if (dom.querySelector(".read") === null) {
+            // book info/download page (/book/<id>/), chapters are listed on /Partlist/<id>/
+            let tocLink = [...dom.querySelectorAll("a[href*='/Partlist/']")]
+                .find(a => /\/Partlist\/\d+\/?$/i.test(a.pathname));
+            if (tocLink) {
+                dom = (await HttpClient.fetchHtml(tocLink.href)).responseXML;
+            }
+        }
         return this.getChapterUrlsFromMultipleTocPages(dom,
             this.extractPartialChapterList,
             this.getUrlsOfTocPages,
@@ -35,6 +43,11 @@ class _88xiaoshuoParser extends Parser {
     }
 
     getUrlsOfTocPages(dom) {
+        // current layout: <span class="pagenum"><select> with one option per TOC page
+        let options = [...dom.querySelectorAll(".pagenum select option")];
+        if (1 < options.length) {
+            return options.slice(1).map(o => new URL(o.value, dom.baseURI).href);
+        }
         let lastPagespan = [...dom.querySelectorAll(".caption > span > a")];
         let lastPage = null;
         for (let node of lastPagespan) {
@@ -55,6 +68,9 @@ class _88xiaoshuoParser extends Parser {
 
     extractPartialChapterList(dom) {
         let chapterList = dom.querySelector(".read");
+        if (chapterList === null) {
+            return [];
+        }
         return [...chapterList.querySelectorAll("a")].map(a => util.hyperLinkToChapter(a));
     }
 

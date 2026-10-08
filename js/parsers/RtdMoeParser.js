@@ -8,12 +8,18 @@ class RtdMoeParser extends Parser {
     }
 
     getChapterUrls(dom) {
+        // current layout: table of chapters, newest first
+        let links = [...dom.querySelectorAll("table a[href*='/chapters/']")];
+        if (0 < links.length) {
+            return Promise.resolve(links.map(a => util.hyperLinkToChapter(a)).reverse());
+        }
         let menu = this.findContent(dom);
         return Promise.resolve(util.hyperlinksToChapterList(menu));
     }
 
     findContent(dom) {
-        return dom.querySelector("div#content");
+        return dom.querySelector("div#content")
+            || dom.querySelector("div.chapter-content");
     }
 
     extractTitleImpl(dom) {

@@ -8,7 +8,12 @@ class MyxlsParser extends Parser {
     }
 
     async getChapterUrls(dom) {
-        let rows = dom.querySelector("div#list dl").children;
+        // current layout: <div id="directoryList"><ul><li><a>
+        let directory = [...dom.querySelectorAll("#directoryList a")];
+        if (0 < directory.length) {
+            return directory.map(a => util.hyperLinkToChapter(a));
+        }
+        let rows = dom.querySelector("div#list dl")?.children ?? [];
         let links = [];
         let count = 0;
         for (let row of rows) {
@@ -24,7 +29,8 @@ class MyxlsParser extends Parser {
     }
 
     findContent(dom) {
-        return dom.querySelector("#content");
+        return dom.querySelector("#content")
+            || dom.querySelector("div#txt");
     }
 
     extractTitleImpl(dom) {

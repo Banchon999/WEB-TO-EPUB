@@ -3,7 +3,9 @@
 parserFactory.register("ficbook.net", () => new FicbookParser());
 parserFactory.register("fic.fan", () => new FicbookParser());
 parserFactory.register("fanfictionero.com", () => new FicbookParser());
+parserFactory.register("fanfic.es", () => new FicbookParser());
 parserFactory.register("ficador.com", () => new FicbookParser());
+parserFactory.register("ficmania.com", () => new FicbookParser());
 
 class FicbookParser extends Parser {
     constructor() {

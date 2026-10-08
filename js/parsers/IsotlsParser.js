@@ -8,7 +8,7 @@ class IsotlsParser extends Parser {
     }
 
     async getChapterUrls(dom) {
-        let menu = dom.querySelector("ul.table-of-contents");
+        let menu = dom.querySelector("ul.table-of-contents, nav#chapters");
         return util.hyperlinksToChapterList(menu);
     }
 

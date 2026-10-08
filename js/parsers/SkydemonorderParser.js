@@ -8,25 +8,59 @@ class SkydemonorderParser extends Parser {
     }
 
     async getChapterUrls(dom) {
-        return [...dom.querySelectorAll("div[x-show='expanded'] a")]
+        // eslint-disable-next-line
+        return [...dom.querySelectorAll("a.block.py-2\\\.5.border-b.border-border.group")]
             .map(a => this.hyperLinkToChapter(a))
             .reverse();
     }
 
     hyperLinkToChapter(link) {
-        let episode = link.parentElement.parentElement
-            .querySelector("[x-text='chapter.episode']")
-            ?.textContent;
         let titleText = link.querySelector("span").textContent.trim();
 
         return {
             sourceUrl: link.href,
-            title: `Episode ${episode}: ${titleText}`,
+            title: `${titleText}`,
         };
     }
 
+    preprocessRawDom(webPageDom) {
+        for (let tag of webPageDom.querySelectorAll("live, comments, epicstream")) {
+            let div = webPageDom.createElement("div");
+
+            while (tag.firstChild) {
+                div.appendChild(tag.firstChild);
+            }
+
+            tag.replaceWith(div);
+        }
+    }
+
     findContent(dom) {
-        return dom.querySelector("[wire\\:ignore]");
+        const content = dom.querySelector("#chapter-body");
+
+        if (!content) {
+            return null;
+        }
+
+        const unwrap = element => {
+            for (const child of [...element.children]) {
+                if (child.tagName !== "P" && child.tagName !== "DIV") {
+                    unwrap(child);
+
+                    while (child.firstChild) {
+                        element.insertBefore(child.firstChild, child);
+                    }
+
+                    child.remove();
+                } else {
+                    unwrap(child);
+                }
+            }
+        };
+
+        unwrap(content);
+
+        return content;
     }
 
     extractTitleImpl(dom) {
@@ -35,14 +69,22 @@ class SkydemonorderParser extends Parser {
 
     findChapterTitle(dom) {
         let h1 = dom.querySelector("h1");
-        return h1.textContent.trim() + ": " + h1.nextElementSibling.textContent;
+        return h1 ? h1.textContent.trim() : "";
     }
 
     findCoverImageUrl(dom) {
-        return util.getFirstImgSrc(dom, "div.w-full");
+        const img = dom.querySelector(
+            "div.order-1.flex.justify-center img"
+        );
+
+        if (!img) {
+            return null;
+        }
+
+        return img.getAttribute("src") || img.src || null;
     }
 
     getInformationEpubItemChildNodes(dom) {
-        return [...dom.querySelectorAll(".lg\\:col-span-2 .text-primary-500")];
+        return [...dom.querySelectorAll("div[x-ref='desc'] p")];
     }
 }

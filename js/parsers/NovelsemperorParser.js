@@ -33,10 +33,12 @@ class NovelsemperorParser extends Parser {
         if (pagination === null) {
             return null;
         }
-        return [...pagination.querySelectorAll("li.pagination-link")]?.pop()
+        let url = [...pagination.querySelectorAll("li.pagination-link")]?.pop()
             ?.getAttribute("onclick")
             ?.split("'")?.[1]
             ?.replace("//", "https://");
+        // site currently renders broken pagination links that just point to "/"
+        return (url && url.startsWith("http")) ? url : null;
     }
 
     findContent(dom) {

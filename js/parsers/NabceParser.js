@@ -34,7 +34,7 @@ class NabceParser extends Parser {
     }
 
     findContent(dom) {
-        return dom.querySelector(".mb-8");
+        return dom.querySelector("#chapter-content");
     }
 
     extractTitleImpl(dom) {
