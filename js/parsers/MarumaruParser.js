@@ -35,30 +35,33 @@ class MarumaruParser extends Parser {
         if (this.episodesUrl == null) {
             await this.loadEpubMetaInfo(dom);
         }
-        let chapters = [];
+        let toChapter = (e) => {
+            let sourceUrl = `${origin}/novel/${id}/${e.id}`;
+            if (e.embed_url) {
+                this.embedUrls.set(sourceUrl, e.embed_url);
+            }
+            return {
+                sourceUrl: sourceUrl,
+                title: e.title ?? `${e.number}화`,
+                isIncludeable: e.ready !== false
+            };
+        };
+        let episodes = [];
         let size = 30;
         for (let page = 1; ; ++page) {
-            let json = (await HttpClient.fetchJson(`${this.episodesUrl}?page=${page}&size=${size}&order=asc`)).json;
-            let episodes = json.episodes ?? [];
-            let partial = episodes.map(e => {
-                let sourceUrl = `${origin}/novel/${id}/${e.id}`;
-                if (e.embed_url) {
-                    this.embedUrls.set(sourceUrl, e.embed_url);
-                }
-                return {
-                    sourceUrl: sourceUrl,
-                    title: e.title ?? `${e.number}화`,
-                    isIncludeable: e.ready !== false
-                };
-            });
-            chapters = chapters.concat(partial);
-            chapterUrlsUI.showTocProgress(partial);
-            if ((episodes.length < size) || (json.total <= chapters.length)) {
+            // the API's "order" parameter is inverted (order=asc gives newest first), so sort below instead
+            let json = (await HttpClient.fetchJson(`${this.episodesUrl}?page=${page}&size=${size}`)).json;
+            let partial = json.episodes ?? [];
+            episodes = episodes.concat(partial);
+            chapterUrlsUI.showTocProgress(partial.map(toChapter));
+            if ((partial.length < size) || (json.total <= episodes.length)) {
                 break;
             }
             await this.rateLimitDelay();
         }
-        return chapters;
+        return episodes
+            .sort((a, b) => (Number(a.number) || 0) - (Number(b.number) || 0))
+            .map(toChapter);
     }
 
     async fetchChapter(url) {
